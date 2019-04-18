@@ -77,12 +77,11 @@ main = defaultMain $ testGroup "hevm"
       [ testGroup "Example (reverse)"
           [ testCase "success" $
               assertEqual "example contract reverses"
-                (execute 0xdeadbeef "foobar" 6) (Just "raboof")
+                (Just "raboof") (execute 0xdeadbeef "foobar" 6)
           , testCase "failure" $
               assertEqual "example contract fails on length mismatch"
-                (execute 0xdeadbeef "foobar" 5) Nothing
+                Nothing (execute 0xdeadbeef "foobar" 5)
           ]
-
       , testGroup "ECRECOVER"
           [ testCase "success" $ do
               let
@@ -103,6 +102,14 @@ main = defaultMain $ testGroup "hevm"
               assertEqual "fail because bit flip"
                 Nothing
                 (execute 1 (h <> v <> r <> s) 32)
+          ]
+      , testGroup "IDENTITY"
+          [ testCase "success" $
+              assertEqual "example contract returns input as output"
+                (Just "satoshi") (execute 4 "satoshi" 7)
+          , testCase "fail on length mismatch" $
+              assertEqual "example contract fails on length mismatch"
+                Nothing (execute 4 "satoshi" 5)
           ]
       ]
 

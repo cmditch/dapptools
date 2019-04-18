@@ -1027,53 +1027,63 @@ exec1 = do
         xxx ->
           vmError (UnrecognizedOpcode xxx)
 
+-- * Precompiled contract helpers
+
 precompiledContract :: (?op :: Word8) => EVM ()
 precompiledContract = do
   vm <- get
   fees <- use (block . schedule)
   stk <- use (state . stack)
-
   case (?op, stk) of
     -- CALL (includes value)
-    (0xf1, (gasCap:(num -> op):_:inOffset:inSize:outOffset:outSize:xs)) ->
-      doIt vm fees op gasCap inOffset inSize outOffset outSize xs
+    (0xf1, (gasCap:(num -> precompile):_:inOffset:inSize:outOffset:outSize:xs)) ->
+      doIt vm fees precompile gasCap inOffset inSize outOffset outSize xs
     -- CALLCODE (includes value)
-    (0xf2, (gasCap:(num -> op):_:inOffset:inSize:outOffset:outSize:xs)) ->
-      doIt vm fees op gasCap inOffset inSize outOffset outSize xs
+    (0xf2, (gasCap:(num -> precompile):_:inOffset:inSize:outOffset:outSize:xs)) ->
+      doIt vm fees precompile gasCap inOffset inSize outOffset outSize xs
     -- STATICCALL (does not include value)
-    (0xfa, (gasCap:(num -> op):inOffset:inSize:outOffset:outSize:xs)) ->
-      doIt vm fees op gasCap inOffset inSize outOffset outSize xs
+    (0xfa, (gasCap:(num -> precompile):inOffset:inSize:outOffset:outSize:xs)) ->
+      doIt vm fees precompile gasCap inOffset inSize outOffset outSize xs
     -- DELEGATECALL (does not include value)
-    (0xf4, (gasCap:(num -> op):inOffset:inSize:outOffset:outSize:xs)) ->
-      doIt vm fees op gasCap inOffset inSize outOffset outSize xs
+    (0xf4, (gasCap:(num -> precompile):inOffset:inSize:outOffset:outSize:xs)) ->
+      doIt vm fees precompile gasCap inOffset inSize outOffset outSize xs
     _ ->
       underrun
 
   where
-    doIt vm fees op gasCap inOffset inSize outOffset outSize xs =
+    doIt vm fees precompileAddr gasCap inOffset inSize outOffset outSize xs =
       let
         input = readMemory (num inOffset) (num inSize) vm
-        cost  =
-          case op of
-            1 -> 3000
-            _ -> error ("unimplemented precompiled contract " ++ show op)
+        cost = costOfPrecompile precompileAddr input
       in
-        case (EVM.Precompiled.execute op input (num outSize)
+        case (EVM.Precompiled.execute precompileAddr input (num outSize)
              , gasCap >= cost) of
           (Nothing, _) -> do
             assign (state . stack) (0 : xs)
             next
           (_, False) -> do
-            assign (state . stack) (0 : xs)
-            next
+            burn 700 $ do
+              assign (state . stack) (0 : xs)
+              next
           (Just output, True) -> do
             accessMemoryRange fees inOffset inSize $
               accessMemoryRange fees outOffset outSize $
-                burn cost $ do
+                burn (cost + 700) $ do
                   assign (state . stack) (1 : xs)
                   assign (state . returndata) output
                   copyBytesToMemory output outSize 0 outOffset
                   next
+
+
+costOfPrecompile :: Int -> ByteString -> Word
+costOfPrecompile precompileAddr input =
+  case precompileAddr of
+    1 -> 3000                                                       -- ECRECOVER
+    2 -> 42                                                         -- SHA2-256
+    3 -> 42                                                         -- RIPEMD-160
+    4 -> num $ (((BS.length input + 31) `div` 32) * 3) + 15         -- IDENTITY
+    _ -> error ("unimplemented precompiled contract " ++ show precompileAddr)
+
 
 -- * Opcode helper actions
 

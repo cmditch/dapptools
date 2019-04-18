@@ -1,0 +1,149 @@
+<!doctype html>
+<title>hevm test results</title>
+<style>
+* {
+  font-family:
+    "latin modern mono", "fantasque sans mono",
+    inconsolata, menlo, monospace;
+  font-size: 22px;
+  line-height: 26px;
+}
+
+body { margin: 2rem; }
+header { text-align: center; margin: 4rem 0; }
+table { border-collapse: collapse; width: 100%; }
+tr:nth-child(even) { background: rgba(0, 0, 0, 0.05); }
+td:not(:first-child):not(:last-child) { padding: 0 1rem; }
+.category { opacity: 0.6; text-align: right }
+a { color: darkblue; text-decoration: none; }
+h1, h2 { text-align: center; margin-top: 2rem  }
+.testcase { font-weight: bold }
+#failed .testcase { color: rgb(200, 0, 0) }
+#balancefailed .testcase { color: rgb(200, 200, 0) }
+#passed .testcase { color: rgb(0, 150, 0) }
+</style>
+<header>
+<h1>hevm consensus test report</h1>
+<p>
+2019-04-18
+<p>
+      24
+passed, 
+      20
+bad-balance, 
+      55
+failed
+<p>
+(Test suite: <span class=GeneralStateTests</span>GeneralStateTests</span> for ConstantinopleFix)
+</header>
+<h2>Failed tests</h2>
+<table id=failed>
+<tbody>
+<tr><td class=testcase>identity_to_bigger_d0g0v0<td>bad-state<td class=category>BlockchainTests/GeneralStateTests/stPreCompiledContracts
+<tr><td class=testcase>identity_to_smaller_d0g0v0<td>bad-state<td class=category>BlockchainTests/GeneralStateTests/stPreCompiledContracts
+<tr><td class=testcase>sec80_d0g0v0<td>bad-state<td class=category>BlockchainTests/GeneralStateTests/stPreCompiledContracts
+<tr><td class=testcase>CALLCODEEcrecover0_0input_d0g0v0<td>bad-state<td class=category>BlockchainTests/GeneralStateTests/stPreCompiledContracts2
+<tr><td class=testcase>CALLCODEEcrecover1_d0g0v0<td>bad-state<td class=category>BlockchainTests/GeneralStateTests/stPreCompiledContracts2
+<tr><td class=testcase>CALLCODEEcrecover2_d0g0v0<td>bad-state<td class=category>BlockchainTests/GeneralStateTests/stPreCompiledContracts2
+<tr><td class=testcase>CALLCODEEcrecover80_d0g0v0<td>bad-state<td class=category>BlockchainTests/GeneralStateTests/stPreCompiledContracts2
+<tr><td class=testcase>CALLCODEEcrecoverR_prefixed0_d0g0v0<td>bad-state<td class=category>BlockchainTests/GeneralStateTests/stPreCompiledContracts2
+<tr><td class=testcase>CALLCODEEcrecoverV_prefixedf0_d0g0v0<td>bad-state<td class=category>BlockchainTests/GeneralStateTests/stPreCompiledContracts2
+<tr><td class=testcase>CALLCODEEcrecoverV_prefixedf0_d1g0v0<td>bad-state<td class=category>BlockchainTests/GeneralStateTests/stPreCompiledContracts2
+<tr><td class=testcase>CALLCODEIdentitiy_1_d0g0v0<td>bad-state<td class=category>BlockchainTests/GeneralStateTests/stPreCompiledContracts2
+<tr><td class=testcase>CALLCODEIdentity_1_nonzeroValue_d0g0v0<td>bad-state<td class=category>BlockchainTests/GeneralStateTests/stPreCompiledContracts2
+<tr><td class=testcase>CALLCODEIdentity_2_d0g0v0<td>bad-state<td class=category>BlockchainTests/GeneralStateTests/stPreCompiledContracts2
+<tr><td class=testcase>CALLCODEIdentity_3_d0g0v0<td>bad-state<td class=category>BlockchainTests/GeneralStateTests/stPreCompiledContracts2
+<tr><td class=testcase>CALLCODERipemd160_1_d0g0v0<td>bad-state<td class=category>BlockchainTests/GeneralStateTests/stPreCompiledContracts2
+<tr><td class=testcase>CALLCODERipemd160_2_d0g0v0<td>bad-state<td class=category>BlockchainTests/GeneralStateTests/stPreCompiledContracts2
+<tr><td class=testcase>CALLCODERipemd160_3_d0g0v0<td>bad-state<td class=category>BlockchainTests/GeneralStateTests/stPreCompiledContracts2
+<tr><td class=testcase>CALLCODERipemd160_3_postfixed0_d0g0v0<td>bad-state<td class=category>BlockchainTests/GeneralStateTests/stPreCompiledContracts2
+<tr><td class=testcase>CALLCODERipemd160_3_prefixed0_d0g0v0<td>bad-state<td class=category>BlockchainTests/GeneralStateTests/stPreCompiledContracts2
+<tr><td class=testcase>CALLCODERipemd160_4_d0g0v0<td>bad-state<td class=category>BlockchainTests/GeneralStateTests/stPreCompiledContracts2
+<tr><td class=testcase>CALLCODESha256_0_d0g0v0<td>bad-state<td class=category>BlockchainTests/GeneralStateTests/stPreCompiledContracts2
+<tr><td class=testcase>CALLCODESha256_1_d0g0v0<td>bad-state<td class=category>BlockchainTests/GeneralStateTests/stPreCompiledContracts2
+<tr><td class=testcase>CALLCODESha256_1_nonzeroValue_d0g0v0<td>bad-state<td class=category>BlockchainTests/GeneralStateTests/stPreCompiledContracts2
+<tr><td class=testcase>CALLCODESha256_2_d0g0v0<td>bad-state<td class=category>BlockchainTests/GeneralStateTests/stPreCompiledContracts2
+<tr><td class=testcase>CALLCODESha256_3_d0g0v0<td>bad-state<td class=category>BlockchainTests/GeneralStateTests/stPreCompiledContracts2
+<tr><td class=testcase>CALLCODESha256_3_postfix0_d0g0v0<td>bad-state<td class=category>BlockchainTests/GeneralStateTests/stPreCompiledContracts2
+<tr><td class=testcase>CALLCODESha256_3_prefix0_d0g0v0<td>bad-state<td class=category>BlockchainTests/GeneralStateTests/stPreCompiledContracts2
+<tr><td class=testcase>CALLCODESha256_4_d0g0v0<td>bad-state<td class=category>BlockchainTests/GeneralStateTests/stPreCompiledContracts2
+<tr><td class=testcase>CALLCODESha256_4_gas99_d0g0v0<td>bad-state<td class=category>BlockchainTests/GeneralStateTests/stPreCompiledContracts2
+<tr><td class=testcase>CallEcrecover0_0input_d0g0v0<td>bad-state<td class=category>BlockchainTests/GeneralStateTests/stPreCompiledContracts2
+<tr><td class=testcase>CallEcrecover1_d0g0v0<td>bad-state<td class=category>BlockchainTests/GeneralStateTests/stPreCompiledContracts2
+<tr><td class=testcase>CallEcrecover2_d0g0v0<td>bad-state<td class=category>BlockchainTests/GeneralStateTests/stPreCompiledContracts2
+<tr><td class=testcase>CallEcrecover80_d0g0v0<td>bad-state<td class=category>BlockchainTests/GeneralStateTests/stPreCompiledContracts2
+<tr><td class=testcase>CallEcrecoverCheckLengthWrongV_d0g0v0<td>bad-state<td class=category>BlockchainTests/GeneralStateTests/stPreCompiledContracts2
+<tr><td class=testcase>CallEcrecoverR_prefixed0_d0g0v0<td>bad-state<td class=category>BlockchainTests/GeneralStateTests/stPreCompiledContracts2
+<tr><td class=testcase>CallIdentitiy_1_d0g0v0<td>bad-state<td class=category>BlockchainTests/GeneralStateTests/stPreCompiledContracts2
+<tr><td class=testcase>CallIdentity_1_nonzeroValue_d0g0v0<td>bad-state<td class=category>BlockchainTests/GeneralStateTests/stPreCompiledContracts2
+<tr><td class=testcase>CallIdentity_2_d0g0v0<td>bad-state<td class=category>BlockchainTests/GeneralStateTests/stPreCompiledContracts2
+<tr><td class=testcase>CallIdentity_3_d0g0v0<td>bad-state<td class=category>BlockchainTests/GeneralStateTests/stPreCompiledContracts2
+<tr><td class=testcase>CallRipemd160_1_d0g0v0<td>bad-state<td class=category>BlockchainTests/GeneralStateTests/stPreCompiledContracts2
+<tr><td class=testcase>CallRipemd160_2_d0g0v0<td>bad-state<td class=category>BlockchainTests/GeneralStateTests/stPreCompiledContracts2
+<tr><td class=testcase>CallRipemd160_3_d0g0v0<td>bad-state<td class=category>BlockchainTests/GeneralStateTests/stPreCompiledContracts2
+<tr><td class=testcase>CallRipemd160_3_postfixed0_d0g0v0<td>bad-state<td class=category>BlockchainTests/GeneralStateTests/stPreCompiledContracts2
+<tr><td class=testcase>CallRipemd160_3_prefixed0_d0g0v0<td>bad-state<td class=category>BlockchainTests/GeneralStateTests/stPreCompiledContracts2
+<tr><td class=testcase>CallRipemd160_4_d0g0v0<td>bad-state<td class=category>BlockchainTests/GeneralStateTests/stPreCompiledContracts2
+<tr><td class=testcase>CallSha256_0_d0g0v0<td>bad-state<td class=category>BlockchainTests/GeneralStateTests/stPreCompiledContracts2
+<tr><td class=testcase>CallSha256_1_d0g0v0<td>bad-state<td class=category>BlockchainTests/GeneralStateTests/stPreCompiledContracts2
+<tr><td class=testcase>CallSha256_1_nonzeroValue_d0g0v0<td>bad-state<td class=category>BlockchainTests/GeneralStateTests/stPreCompiledContracts2
+<tr><td class=testcase>CallSha256_2_d0g0v0<td>bad-state<td class=category>BlockchainTests/GeneralStateTests/stPreCompiledContracts2
+<tr><td class=testcase>CallSha256_3_d0g0v0<td>bad-state<td class=category>BlockchainTests/GeneralStateTests/stPreCompiledContracts2
+<tr><td class=testcase>CallSha256_3_postfix0_d0g0v0<td>bad-state<td class=category>BlockchainTests/GeneralStateTests/stPreCompiledContracts2
+<tr><td class=testcase>CallSha256_3_prefix0_d0g0v0<td>bad-state<td class=category>BlockchainTests/GeneralStateTests/stPreCompiledContracts2
+<tr><td class=testcase>CallSha256_4_d0g0v0<td>bad-state<td class=category>BlockchainTests/GeneralStateTests/stPreCompiledContracts2
+<tr><td class=testcase>CallSha256_4_gas99_d0g0v0<td>bad-state<td class=category>BlockchainTests/GeneralStateTests/stPreCompiledContracts2
+
+</table>
+<h2>Failed tests (due to balance only)</h2>
+<table id=balancefailed>
+<tbody>
+<tr><td class=testcase>CALLCODEEcrecover0_Gas2999_d0g0v0<td>bad-balance<td class=category>BlockchainTests/GeneralStateTests/stPreCompiledContracts2
+<tr><td class=testcase>CALLCODEEcrecover0_NoGas_d0g0v0<td>bad-balance<td class=category>BlockchainTests/GeneralStateTests/stPreCompiledContracts2
+<tr><td class=testcase>CALLCODEIdentity_4_gas17_d0g0v0<td>bad-balance<td class=category>BlockchainTests/GeneralStateTests/stPreCompiledContracts2
+<tr><td class=testcase>CALLCODEIdentity_5_d0g0v0<td>bad-balance<td class=category>BlockchainTests/GeneralStateTests/stPreCompiledContracts2
+<tr><td class=testcase>CALLCODERipemd160_0_d0g0v0<td>bad-balance<td class=category>BlockchainTests/GeneralStateTests/stPreCompiledContracts2
+<tr><td class=testcase>CALLCODERipemd160_4_gas719_d0g0v0<td>bad-balance<td class=category>BlockchainTests/GeneralStateTests/stPreCompiledContracts2
+<tr><td class=testcase>CALLCODERipemd160_5_d0g0v0<td>bad-balance<td class=category>BlockchainTests/GeneralStateTests/stPreCompiledContracts2
+<tr><td class=testcase>CALLCODESha256_5_d0g0v0<td>bad-balance<td class=category>BlockchainTests/GeneralStateTests/stPreCompiledContracts2
+<tr><td class=testcase>CallEcrecover0_Gas2999_d0g0v0<td>bad-balance<td class=category>BlockchainTests/GeneralStateTests/stPreCompiledContracts2
+<tr><td class=testcase>CallEcrecover0_NoGas_d0g0v0<td>bad-balance<td class=category>BlockchainTests/GeneralStateTests/stPreCompiledContracts2
+<tr><td class=testcase>CallEcrecoverInvalidSignature_d0g0v0<td>bad-balance<td class=category>BlockchainTests/GeneralStateTests/stPreCompiledContracts2
+<tr><td class=testcase>CallEcrecoverUnrecoverableKey_d0g0v0<td>bad-balance<td class=category>BlockchainTests/GeneralStateTests/stPreCompiledContracts2
+<tr><td class=testcase>CallIdentity_4_gas17_d0g0v0<td>bad-balance<td class=category>BlockchainTests/GeneralStateTests/stPreCompiledContracts2
+<tr><td class=testcase>CallIdentity_5_d0g0v0<td>bad-balance<td class=category>BlockchainTests/GeneralStateTests/stPreCompiledContracts2
+<tr><td class=testcase>CallIdentity_6_inputShorterThanOutput_d0g0v0<td>bad-balance<td class=category>BlockchainTests/GeneralStateTests/stPreCompiledContracts2
+<tr><td class=testcase>CallRipemd160_0_d0g0v0<td>bad-balance<td class=category>BlockchainTests/GeneralStateTests/stPreCompiledContracts2
+<tr><td class=testcase>CallRipemd160_4_gas719_d0g0v0<td>bad-balance<td class=category>BlockchainTests/GeneralStateTests/stPreCompiledContracts2
+<tr><td class=testcase>CallRipemd160_5_d0g0v0<td>bad-balance<td class=category>BlockchainTests/GeneralStateTests/stPreCompiledContracts2
+<tr><td class=testcase>CallSha256_5_d0g0v0<td>bad-balance<td class=category>BlockchainTests/GeneralStateTests/stPreCompiledContracts2
+
+</table>
+<h2>Passed tests</h2>
+<table id=passed>
+<tbody>
+<tr><td class=testcase>CALLCODEEcrecover0_completeReturnValue_d0g0v0<td>ok<td class=category>BlockchainTests/GeneralStateTests/stPreCompiledContracts2
+<tr><td class=testcase>CALLCODEEcrecover0_d0g0v0<td>ok<td class=category>BlockchainTests/GeneralStateTests/stPreCompiledContracts2
+<tr><td class=testcase>CALLCODEEcrecover0_gas3000_d0g0v0<td>ok<td class=category>BlockchainTests/GeneralStateTests/stPreCompiledContracts2
+<tr><td class=testcase>CALLCODEEcrecover0_overlappingInputOutput_d0g0v0<td>ok<td class=category>BlockchainTests/GeneralStateTests/stPreCompiledContracts2
+<tr><td class=testcase>CALLCODEEcrecover3_d0g0v0<td>ok<td class=category>BlockchainTests/GeneralStateTests/stPreCompiledContracts2
+<tr><td class=testcase>CALLCODEEcrecoverH_prefixed0_d0g0v0<td>ok<td class=category>BlockchainTests/GeneralStateTests/stPreCompiledContracts2
+<tr><td class=testcase>CALLCODEEcrecoverS_prefixed0_d0g0v0<td>ok<td class=category>BlockchainTests/GeneralStateTests/stPreCompiledContracts2
+<tr><td class=testcase>CALLCODEEcrecoverV_prefixed0_d0g0v0<td>ok<td class=category>BlockchainTests/GeneralStateTests/stPreCompiledContracts2
+<tr><td class=testcase>CALLCODEIdentitiy_0_d0g0v0<td>ok<td class=category>BlockchainTests/GeneralStateTests/stPreCompiledContracts2
+<tr><td class=testcase>CALLCODEIdentity_4_d0g0v0<td>ok<td class=category>BlockchainTests/GeneralStateTests/stPreCompiledContracts2
+<tr><td class=testcase>CALLCODEIdentity_4_gas18_d0g0v0<td>ok<td class=category>BlockchainTests/GeneralStateTests/stPreCompiledContracts2
+<tr><td class=testcase>CallEcrecover0_completeReturnValue_d0g0v0<td>ok<td class=category>BlockchainTests/GeneralStateTests/stPreCompiledContracts2
+<tr><td class=testcase>CallEcrecover0_d0g0v0<td>ok<td class=category>BlockchainTests/GeneralStateTests/stPreCompiledContracts2
+<tr><td class=testcase>CallEcrecover0_gas3000_d0g0v0<td>ok<td class=category>BlockchainTests/GeneralStateTests/stPreCompiledContracts2
+<tr><td class=testcase>CallEcrecover0_overlappingInputOutput_d0g0v0<td>ok<td class=category>BlockchainTests/GeneralStateTests/stPreCompiledContracts2
+<tr><td class=testcase>CallEcrecover3_d0g0v0<td>ok<td class=category>BlockchainTests/GeneralStateTests/stPreCompiledContracts2
+<tr><td class=testcase>CallEcrecoverCheckLength_d0g0v0<td>ok<td class=category>BlockchainTests/GeneralStateTests/stPreCompiledContracts2
+<tr><td class=testcase>CallEcrecoverH_prefixed0_d0g0v0<td>ok<td class=category>BlockchainTests/GeneralStateTests/stPreCompiledContracts2
+<tr><td class=testcase>CallEcrecoverS_prefixed0_d0g0v0<td>ok<td class=category>BlockchainTests/GeneralStateTests/stPreCompiledContracts2
+<tr><td class=testcase>CallEcrecoverV_prefixed0_d0g0v0<td>ok<td class=category>BlockchainTests/GeneralStateTests/stPreCompiledContracts2
+<tr><td class=testcase>CallIdentitiy_0_d0g0v0<td>ok<td class=category>BlockchainTests/GeneralStateTests/stPreCompiledContracts2
+<tr><td class=testcase>CallIdentity_4_d0g0v0<td>ok<td class=category>BlockchainTests/GeneralStateTests/stPreCompiledContracts2
+<tr><td class=testcase>CallIdentity_4_gas18_d0g0v0<td>ok<td class=category>BlockchainTests/GeneralStateTests/stPreCompiledContracts2
+
+</table>

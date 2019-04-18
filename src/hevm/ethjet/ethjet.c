@@ -7,6 +7,9 @@
 #include <stdint.h>
 #include <string.h>
 
+// TODO Remove this lib
+#include <stdio.h>
+
 struct ethjet_context *
 ethjet_init ()
 {
@@ -19,12 +22,14 @@ ethjet_init ()
   return ctx;
 }
 
+
 void
 ethjet_free (struct ethjet_context *ctx)
 {
   secp256k1_context_destroy (ctx->ec);
   free (ctx);
 }
+
 
 /* 
  * The example contract at 0xdeadbeef just reverses its input.
@@ -43,6 +48,10 @@ ethjet_example (struct ethjet_context *ctx,
   return 1;
 }
 
+
+/*
+ * Precompile 0x1 - ECDSA Recovery
+ */
 int
 ethjet_ecrecover (secp256k1_context *ctx,
                   uint8_t *in, size_t in_size,
@@ -90,6 +99,52 @@ ethjet_ecrecover (secp256k1_context *ctx,
   return 1;
 }
 
+
+/*
+ * Precompile 0x2 - SHA2-256
+ */
+int
+ethjet_sha256 (struct ethjet_context *ctx,
+               uint8_t *in, size_t in_size,
+               uint8_t *out, size_t out_size)
+{
+  return 0;
+}
+
+
+/*
+ * Precompile 0x3 - RIPEMD-160
+ */
+int
+ethjet_ripemd160 (struct ethjet_context *ctx,
+                 uint8_t *in, size_t in_size,
+                 uint8_t *out, size_t out_size)
+{
+  return 0;
+}
+
+
+/*
+ * Precompile 0x4 - IDENTITY
+ */
+int
+ethjet_identity (struct ethjet_context *ctx,
+                 uint8_t *in, size_t in_size,
+                 uint8_t *out, size_t out_size)
+{
+  if (out_size != in_size)
+    return 0;
+
+  for (int i = 0; i < in_size; i++)
+    out[i] = in[i];
+
+  return 1;
+}
+
+
+/*
+ * FFI entry point. Execute a given precompiled contract.
+ */
 int
 ethjet (struct ethjet_context *ctx,
         enum ethjet_operation op,
@@ -99,6 +154,18 @@ ethjet (struct ethjet_context *ctx,
   switch (op) {
   case ETHJET_ECRECOVER:
     return ethjet_ecrecover (ctx->ec, in, in_size, out, out_size);
+    break;
+
+  case ETHJET_SHA256:
+    ethjet_sha256 (ctx, in, in_size, out, out_size);
+    break;
+
+  case ETHJET_RIPEMD160:
+    ethjet_ripemd160 (ctx, in, in_size, out, out_size);
+    break;
+
+  case ETHJET_IDENTITY:
+    return ethjet_identity (ctx, in, in_size, out, out_size);
     break;
 
   case ETHJET_EXAMPLE:

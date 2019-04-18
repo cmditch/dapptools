@@ -13,6 +13,9 @@ struct ethjet_context
 enum ethjet_operation
   {
     ETHJET_ECRECOVER = 1,
+    ETHJET_SHA256 = 2,
+    ETHJET_RIPEMD160 = 3,
+    ETHJET_IDENTITY = 4,
     ETHJET_EXAMPLE = 0xdeadbeef,
   };
 
